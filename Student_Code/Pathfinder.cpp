@@ -53,7 +53,6 @@ bool Pathfinder::importMaze(string file_name)
 {
     ifstream in_file;
     in_file.open(file_name);
-    
     int rIn = -1;
     int counter = 0;
     for (int i = 0; i < MAZE_SIDE; i++) //x loop
@@ -71,19 +70,44 @@ bool Pathfinder::importMaze(string file_name)
                 {
                     return false;
                 }
-                m_Maze[i][j][k] = rIn;
-                counter++;
+                if (i == 0 && j == 0 && k == 0)
+                {
+                    if (rIn == 0)
+                    {
+                        return false;
+                    }
+                }
+                if (i == 4 && j == 4 && k == 4)
+                {
+                    if (rIn == 0)
+                    {
+                        return false;
+                    }
+                }
+                counter ++;
             }
         }
-    }
-    if (m_Maze[0][0][0] == 0 || m_Maze[4][4][4] == 0)
-    {
-        return false;
     }
     if (counter != 125)
     {
         return false;
     }
+    
+    ifstream in_file2;
+    in_file2.open(file_name);
+    for (int i = 0; i < MAZE_SIDE; i++) //x loop
+    {
+        for (int j = 0; j < MAZE_SIDE; j++) //y loop
+        {
+            for (int k = 0; k < MAZE_SIDE; k++) //z loop
+            {
+                in_file >> rIn;
+                m_Maze[i][j][k] = rIn;
+                counter++;
+            }
+        }
+    }
+    
     return true;
 }
 
