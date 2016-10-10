@@ -69,6 +69,14 @@ bool Pathfinder::importMaze(string file_name)
         {
             return false;
         }
+        if (counter == 1 && rIn == 0)
+        {
+            return false;
+        }
+        if (counter == 125 && rIn == 0)
+        {
+            return false;
+        }
     }
     in_file.close();
     if (counter != 125)
@@ -106,10 +114,6 @@ bool Pathfinder::importMaze(string file_name)
         }
     }
     in_file2.close();
-    if (m_Maze[0][0][0] == 0 || m_Maze[4][4][4] == 0)
-    {
-        return false;
-    }
     return true;
 }
 
