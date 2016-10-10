@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <sstream>
+#include <fstream>
 
 #include "PathfinderInterface.h"
 
