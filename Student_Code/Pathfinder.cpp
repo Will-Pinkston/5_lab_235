@@ -58,43 +58,38 @@ bool Pathfinder::importMaze(string file_name)
     in_file.open(file_name);
     int rIn = -1;
     int counter = 0;
-    for (int i = 0; i < MAZE_SIDE; i++) //x loop
+    while (in_file >> rIn)
     {
-        for (int j = 0; j < MAZE_SIDE; j++) //y loop
+        counter++;
+        if (rIn == -1)
         {
-            for (int k = 0; k < MAZE_SIDE; k++) //z loop
-            {
-                in_file >> rIn;
-                if (rIn == -1)
-                {
-                    return false;
-                }
-                else if (rIn > 1)
-                {
-                    return false;
-                }
-                if (i == 0 && j == 0 && k == 0)
-                {
-                    if (rIn == 0)
-                    {
-                        return false;
-                    }
-                }
-                if (i == 4 && j == 4 && k == 4)
-                {
-                    if (rIn == 0)
-                    {
-                        return false;
-                    }
-                }
-                counter ++;
-            }
+            return false;
+        }
+        else if (rIn != 1 && rIn != 0)
+        {
+            return false;
         }
     }
+    in_file.close();
     if (counter != 125)
     {
         return false;
     }
+//    if (i == 0 && j == 0 && k == 0)
+//    {
+//        if (rIn == 0)
+//        {
+//            return false;
+//        }
+//    }
+//    if (i == 4 && j == 4 && k == 4)
+//    {
+//        if (rIn == 0)
+//        {
+//            return false;
+//        }
+//    }
+    
     
     ifstream in_file2;
     in_file2.open(file_name);
@@ -104,13 +99,17 @@ bool Pathfinder::importMaze(string file_name)
         {
             for (int k = 0; k < MAZE_SIDE; k++) //z loop
             {
-                in_file >> rIn;
+                in_file2 >> rIn;
                 m_Maze[i][j][k] = rIn;
                 counter++;
             }
         }
     }
-    
+    in_file2.close();
+    if (m_Maze[0][0][0] == 0 || m_Maze[4][4][4] == 0)
+    {
+        return false;
+    }
     return true;
 }
 
