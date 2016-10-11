@@ -52,6 +52,9 @@ void Pathfinder::createRandomMaze()
 
 bool Pathfinder::importMaze(string file_name)
 {
+    x = 4;
+    y = 4;
+    z = 4;
     ifstream in_file;
     in_file.open(file_name);
     int rIn = -1;
@@ -107,7 +110,6 @@ vector<string> Pathfinder::solveMaze()
     if (x == 0 && y == 0 && z == 0)
     {
         s.push_back("(0,0,0)");
-
         return s;
     }
     else
