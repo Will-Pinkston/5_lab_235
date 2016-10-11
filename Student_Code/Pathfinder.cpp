@@ -107,16 +107,16 @@ vector<string> Pathfinder::solveMaze()
     if (x == 0 && y == 0 && z == 0)
     {
         s.push_back("(0,0,0)");
-        for (int i = 0; i < MAZE_SIDE; i++) //z loop
-        {
-            for (int j = 0; j < MAZE_SIDE; j++) //y loop
-            {
-                for (int k = 0; k < MAZE_SIDE; k++) //x loop
-                {
-                    m_Path[i][j][k] = 0; // reset path array
-                }
-            }
-        }
+//        for (int i = 0; i < MAZE_SIDE; i++) //z loop
+//        {
+//            for (int j = 0; j < MAZE_SIDE; j++) //y loop
+//            {
+//                for (int k = 0; k < MAZE_SIDE; k++) //x loop
+//                {
+//                    m_Path[i][j][k] = 0; // reset path array
+//                }
+//            }
+//        }
         return s;
     }
     else
