@@ -102,19 +102,19 @@ bool Pathfinder::importMaze(string file_name)
 
 vector<string> Pathfinder::solveMaze(/*int x, int y, int z*/)
 {
-    cout << "\n\n\nPrinting Map of maze" << endl;
-    for (int i = 0; i < MAZE_SIDE; i++) //z loop
-    {
-        for (int j = 0; j < MAZE_SIDE; j++) //y loop
-        {
-            for (int k = 0; k < MAZE_SIDE; k++) //x loop
-            {
-                cout << m_Maze[i][j][k] << " "; // reset path array
-            }
-            cout << "\n";
-        }
-        cout << "\n";
-    }
+//    cout << "\n\n\nPrinting Map of maze" << endl;
+//    for (int i = 0; i < MAZE_SIDE; i++) //z loop
+//    {
+//        for (int j = 0; j < MAZE_SIDE; j++) //y loop
+//        {
+//            for (int k = 0; k < MAZE_SIDE; k++) //x loop
+//            {
+//                cout << m_Maze[i][j][k] << " "; // reset path array
+//            }
+//            cout << "\n";
+//        }
+//        cout << "\n";
+//    }
     vector<string> s;
     m_Path[z][y][x] = 1;
     if (x == 0 && y == 0 && z == 0)
@@ -151,23 +151,6 @@ vector<string> Pathfinder::solveMaze(/*int x, int y, int z*/)
                 m_Path[z][y][x] = 0;
             }
         }
-        if (x != 4 && m_Maze[z][y][x+1] == 1 && m_Path[z][y][x+1] == 0)
-        {
-            x++;
-            s = solveMaze();
-            x--;
-            if (s.size() > 0 && s.front() == "(0,0,0)")
-            {
-                stringstream add;
-                add << "(" << x << "," << y << "," << z << ")";
-                s.push_back(add.str());
-                return s;
-            }
-            else
-            {
-                m_Path[z][y][x] = 0;
-            }
-        }
         if (y != 0 && m_Maze[z][y-1][x] == 1 && m_Path[z][y-1][x] == 0)
         {
             y--;
@@ -185,11 +168,11 @@ vector<string> Pathfinder::solveMaze(/*int x, int y, int z*/)
                 m_Path[z][y][x] = 0;
             }
         }
-        if (y != 4 && m_Maze[z][y+1][x] == 1 && m_Path[z][y+1][x] == 0)
+        if (z != 0 && m_Maze[z-1][y][x] == 1 && m_Path[z-1][y][x] == 0)
         {
-            y++;
+            z--;
             s = solveMaze();
-            y--;
+            z++;
             if (s.size() > 0 && s.front() == "(0,0,0)")
             {
                 stringstream add;
@@ -202,11 +185,28 @@ vector<string> Pathfinder::solveMaze(/*int x, int y, int z*/)
                 m_Path[z][y][x] = 0;
             }
         }
-        if (z != 0 && m_Maze[z-1][y][x] == 1 && m_Path[z-1][y][x] == 0)
+        if (x != 4 && m_Maze[z][y][x+1] == 1 && m_Path[z][y][x+1] == 0)
         {
-            z--;
+            x++;
             s = solveMaze();
-            z++;
+            x--;
+            if (s.size() > 0 && s.front() == "(0,0,0)")
+            {
+                stringstream add;
+                add << "(" << x << "," << y << "," << z << ")";
+                s.push_back(add.str());
+                return s;
+            }
+            else
+            {
+                m_Path[z][y][x] = 0;
+            }
+        }
+        if (y != 4 && m_Maze[z][y+1][x] == 1 && m_Path[z][y+1][x] == 0)
+        {
+            y++;
+            s = solveMaze();
+            y--;
             if (s.size() > 0 && s.front() == "(0,0,0)")
             {
                 stringstream add;
