@@ -106,6 +106,7 @@ bool Pathfinder::importMaze(string file_name)
 vector<string> Pathfinder::solveMaze()
 {
     vector<string> s;
+    s.push_back("");
     m_Path[z][y][x] = 1;
     if (x == 0 && y == 0 && z == 0)
     {
