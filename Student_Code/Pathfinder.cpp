@@ -102,6 +102,19 @@ bool Pathfinder::importMaze(string file_name)
 
 vector<string> Pathfinder::solveMaze(/*int x, int y, int z*/)
 {
+    cout << "\n\n\nPrinting Map of maze" << endl;
+    for (int i = 0; i < MAZE_SIDE; i++) //z loop
+    {
+        for (int j = 0; j < MAZE_SIDE; j++) //y loop
+        {
+            for (int k = 0; k < MAZE_SIDE; k++) //x loop
+            {
+                cout << m_Maze[i][j][k] << " "; // reset path array
+            }
+            cout << "\n";
+        }
+        cout << "\n";
+    }
     vector<string> s;
     m_Path[z][y][x] = 1;
     if (x == 0 && y == 0 && z == 0)
