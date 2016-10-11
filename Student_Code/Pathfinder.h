@@ -20,12 +20,17 @@ class Pathfinder : public PathfinderInterface
 {
 private:
     int m_Maze[5][5][5];
+    int m_Path[5][5][5];
     string m_Maze_string;
+    int x = 4;
+    int y = 4;
+    int z = 4;
+//    vector<string> m_MazePath;
 public:
     Pathfinder();
     
     string getMaze();
     void createRandomMaze();
     bool importMaze(string file_name);
-    vector<string> solveMaze();
+    vector<string> solveMaze(/*int x = 4, int y = 4, int z = 4*/);
 };
