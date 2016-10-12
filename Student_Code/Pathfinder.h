@@ -25,6 +25,7 @@ private:
     int x /*= 4*/;
     int y /*= 4*/;
     int z /*= 4*/;
+    stringstream add;
 //    vector<string> m_MazePath;
 public:
     Pathfinder();
@@ -32,5 +33,5 @@ public:
     string getMaze();
     void createRandomMaze();
     bool importMaze(string file_name);
-    vector<string> solveMaze(/*int x = 4, int y = 4, int z = 4*/);
+    vector<string> solveMaze();
 };
