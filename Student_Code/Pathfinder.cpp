@@ -102,6 +102,21 @@ bool Pathfinder::importMaze(string file_name)
     return true;
 }
 
+//vector<string> Pathfinder::solveMaze()
+//{
+////    NOT WORKING STINKING FUNCTION TOO MUCH GOING ON TO DEBUG
+//    vector<string> s;
+//    if (m_Maze[z][y][x] == 1)
+//    {
+//        
+//    }
+//    return s;
+//}
+
+
+
+
+
 vector<string> Pathfinder::solveMaze()
 {
 //    cout << getMaze() << endl;
@@ -111,6 +126,17 @@ vector<string> Pathfinder::solveMaze()
     {
         s.push_back("(0,0,0)");
         m_Path[z][y][x] = 0;
+        for (int i = 0; i < MAZE_SIDE; i++) //z loop
+        {
+            for (int j = 0; j < MAZE_SIDE; j++) //y loop
+            {
+                for (int k = 0; k < MAZE_SIDE; k++) //x loop
+                {
+                    m_Path[i][j][k] = 0;
+                }
+            }
+        }
+        
         return s;
     }
     else
@@ -128,10 +154,10 @@ vector<string> Pathfinder::solveMaze()
                 add.str(std::string());
                 return s;
             }
-            else
-            {
-                m_Path[z][y][x] = 0;
-            }
+//            else
+//            {
+//                m_Path[z][y][x] = 0;
+//            }
         }
         if (y != 0 && m_Maze[z][y-1][x] == 1 && m_Path[z][y-1][x] == 0)
         {
@@ -146,10 +172,10 @@ vector<string> Pathfinder::solveMaze()
                 add.str(std::string());
                 return s;
             }
-            else
-            {
-                m_Path[z][y][x] = 0;
-            }
+//            else
+//            {
+//                m_Path[z][y][x] = 0;
+//            }
         }
         if (z != 0 && m_Maze[z-1][y][x] == 1 && m_Path[z-1][y][x] == 0)
         {
@@ -164,10 +190,10 @@ vector<string> Pathfinder::solveMaze()
                 add.str(std::string());
                 return s;
             }
-            else
-            {
-                m_Path[z][y][x] = 0;
-            }
+//            else
+//            {
+//                m_Path[z][y][x] = 0;
+//            }
         }
         if (x != 4 && m_Maze[z][y][x+1] == 1 && m_Path[z][y][x+1] == 0)
         {
@@ -182,10 +208,10 @@ vector<string> Pathfinder::solveMaze()
                 add.str(std::string());
                 return s;
             }
-            else
-            {
-                m_Path[z][y][x] = 0;
-            }
+//            else
+//            {
+//                m_Path[z][y][x] = 0;
+//            }
         }
         if (y != 4 && m_Maze[z][y+1][x] == 1 && m_Path[z][y+1][x] == 0)
         {
@@ -200,10 +226,10 @@ vector<string> Pathfinder::solveMaze()
                 add.str(std::string());
                 return s;
             }
-            else
-            {
-                m_Path[z][y][x] = 0;
-            }
+//            else
+//            {
+//                m_Path[z][y][x] = 0;
+//            }
         }
         if (z != 4 && m_Maze[z+1][y][x] == 1 && m_Path[z+1][y][x] == 0)
         {
@@ -218,10 +244,10 @@ vector<string> Pathfinder::solveMaze()
                 add.str(std::string());
                 return s;
             }
-            else
-            {
-                m_Path[z][y][x] = 0;
-            }
+//            else
+//            {
+//                m_Path[z][y][x] = 0;
+//            }
         }
 
         else return s;
