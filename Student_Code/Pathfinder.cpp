@@ -36,6 +36,7 @@ string Pathfinder::getMaze()
 
 void Pathfinder::createRandomMaze()
 {
+    cout << "createRandomMaze()" << endl;
     for (int i = 0; i < MAZE_SIDE; i++) //z loop
     {
         for (int j = 0; j < MAZE_SIDE; j++) //y loop
@@ -52,9 +53,6 @@ void Pathfinder::createRandomMaze()
 
 bool Pathfinder::importMaze(string file_name)
 {
-    x = 4;
-    y = 4;
-    z = 4;
     ifstream in_file;
     in_file.open(file_name);
     int rIn = -1;
@@ -105,6 +103,7 @@ bool Pathfinder::importMaze(string file_name)
 
 vector<string> Pathfinder::solveMaze()
 {
+    cout << "solveMaze()" << endl;
     vector<string> s;
     m_Path[z][y][x] = 1;
     if (x == 0 && y == 0 && z == 0)
