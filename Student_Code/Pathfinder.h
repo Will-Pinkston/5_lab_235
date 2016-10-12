@@ -26,7 +26,6 @@ private:
     int y = 4;
     int z = 4;
     stringstream add;
-//    vector<string> m_MazePath;
 public:
     Pathfinder();
     

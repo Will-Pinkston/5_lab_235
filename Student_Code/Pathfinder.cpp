@@ -36,7 +36,6 @@ string Pathfinder::getMaze()
 
 void Pathfinder::createRandomMaze()
 {
-    cout << "createRandomMaze()" << endl;
     for (int i = 0; i < MAZE_SIDE; i++) //z loop
     {
         for (int j = 0; j < MAZE_SIDE; j++) //y loop
@@ -103,7 +102,7 @@ bool Pathfinder::importMaze(string file_name)
 
 vector<string> Pathfinder::solveMaze()
 {
-    cout << "solveMaze()" << endl;
+    getMaze();
     vector<string> s;
     m_Path[z][y][x] = 1;
     if (x == 0 && y == 0 && z == 0)
@@ -121,7 +120,6 @@ vector<string> Pathfinder::solveMaze()
             x++;
             if (s.size() > 0 && s.front() == "(0,0,0)")
             {
-//                stringstream add;
                 add << "(" << x << "," << y << "," << z << ")";
                 s.push_back(add.str());
                 add.str(std::string());
@@ -140,7 +138,6 @@ vector<string> Pathfinder::solveMaze()
             y++;
             if (s.size() > 0 && s.front() == "(0,0,0)")
             {
-//                stringstream add;
                 add << "(" << x << "," << y << "," << z << ")";
                 s.push_back(add.str());
                 add.str(std::string());
@@ -159,7 +156,6 @@ vector<string> Pathfinder::solveMaze()
             z++;
             if (s.size() > 0 && s.front() == "(0,0,0)")
             {
-//                stringstream add;
                 add << "(" << x << "," << y << "," << z << ")";
                 s.push_back(add.str());
                 add.str(std::string());
@@ -178,7 +174,6 @@ vector<string> Pathfinder::solveMaze()
             x--;
             if (s.size() > 0 && s.front() == "(0,0,0)")
             {
-//                stringstream add;
                 add << "(" << x << "," << y << "," << z << ")";
                 s.push_back(add.str());
                 add.str(std::string());
@@ -197,7 +192,6 @@ vector<string> Pathfinder::solveMaze()
             y--;
             if (s.size() > 0 && s.front() == "(0,0,0)")
             {
-//                stringstream add;
                 add << "(" << x << "," << y << "," << z << ")";
                 s.push_back(add.str());
                 add.str(std::string());
@@ -216,7 +210,6 @@ vector<string> Pathfinder::solveMaze()
             z--;
             if (s.size() > 0 && s.front() == "(0,0,0)")
             {
-//                stringstream add;
                 add << "(" << x << "," << y << "," << z << ")";
                 s.push_back(add.str());
                 add.str(std::string());
