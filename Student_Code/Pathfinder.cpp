@@ -1,5 +1,6 @@
 
 #include "Pathfinder.h"
+#include <ctime>
 
 Pathfinder::Pathfinder()
 {
@@ -14,6 +15,7 @@ Pathfinder::Pathfinder()
             }
         }
     }
+    srand((int)time(0));
 }
 
 string Pathfinder::getMaze()
@@ -102,12 +104,13 @@ bool Pathfinder::importMaze(string file_name)
 
 vector<string> Pathfinder::solveMaze()
 {
-    getMaze();
+//    cout << getMaze() << endl;
     vector<string> s;
     m_Path[z][y][x] = 1;
     if (x == 0 && y == 0 && z == 0)
     {
         s.push_back("(0,0,0)");
+        m_Path[z][y][x] = 0;
         return s;
     }
     else
